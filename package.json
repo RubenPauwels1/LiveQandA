@@ -1,0 +1,26 @@
+{
+  "name": "2imd-webtech2-nodejs",
+  "version": "1.0.0",
+  "description": "Intro to node.js by @goodbytes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iamgoodbytes/2imd-webtech2-nodejs.git"
+  },
+  "author": "@goodbytes",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/iamgoodbytes/2imd-webtech2-nodejs/issues"
+  },
+  "homepage": "https://github.com/iamgoodbytes/2imd-webtech2-nodejs#readme",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "jade": "^1.11.0",
+    "mongoose": "^4.4.6",
+    "pug": "^2.0.0-alpha6"
+  }
+}
