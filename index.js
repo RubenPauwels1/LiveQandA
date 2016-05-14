@@ -29,6 +29,7 @@ io.on('connection', function(socket){
   socket.on("New Discussion", function(newDiscussion){
       controller.create(newDiscussion, function(returnDiscussion){
         console.log(returnDiscussion);
+        io.emit("newDiscussionInDB", returnDiscussion);
       });
   });
 });
