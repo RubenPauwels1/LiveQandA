@@ -1,7 +1,8 @@
 html
   head
     title= "Q&A App"
-    link(rel='stylesheet' href='../build/build.css')
+    //style
+      include ../build/build.css
     script(src='https://code.jquery.com/jquery-2.2.3.min.js')
     script
       include ../js/script.js
@@ -11,7 +12,9 @@ html
     
 form
     div.input
-        input(type="text", id="discussionName" placeholder="Your discussion comes here")
-        input(type="submit", id="submitDiscussion" value="Post a new discussion")
-each item in discussions
-  h2.discussion #{item.discussion}
+        input(type = "text", id = "discussionName" placeholder = "Your discussion comes here")
+        input(type = "submit", id = "submitDiscussion" value = "Post a new discussion")
+ul.discussions
+  each discussion in discussions
+    a(href = discussion._id)
+      h2.discussion #{discussion.discussion}
