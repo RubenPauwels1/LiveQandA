@@ -22,5 +22,8 @@
     "jade": "^1.11.0",
     "mongoose": "^4.4.6",
     "pug": "^2.0.0-alpha6"
+  },
+  "devDependencies": {
+    "gulp-cli": "^1.2.1"
   }
 }
