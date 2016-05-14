@@ -1,0 +1,17 @@
+html
+  head
+    title= "Q&A App"
+    link(rel='stylesheet' href='../build/build.css')
+    script(src='https://code.jquery.com/jquery-2.2.3.min.js')
+    script
+      include ../js/script.js
+    script(src='http://localhost:3000/socket.io/socket.io.js')
+  body
+    h1= "Discussions"
+    
+form
+    div.input
+        input(type="text", id="discussionName" placeholder="Your discussion comes here")
+        input(type="submit", id="submitDiscussion" value="Post a new discussion")
+each item in discussions
+  h2.discussion #{item.discussion}
