@@ -65,10 +65,37 @@ function getAllQuestionsAndAnswers (req, res, discussion) {
         console.log("discussion:" + discussion);
 		return res.render('discussion/questionandanswer', {questionsandanswers: questionsandanswers, discussion: discussion});
 	});
+    
 }
+
+function createAnswer(newAnswer, returnAnswer){
+    //FIND VRAAGID & PUSH ANSWER IN DB (voor de juiste ID)
+    console.log("createAnswer Fired!");
+    console.log(newAnswer);
+    QuestionsAndAnswers.findByIdAndUpdate(
+        newAnswer.questionId,
+        {$push: {"answers": {answer: newAnswer.answer}}},
+        {safe: true, upsert: true},
+        function(err, model){
+            //console.log(err);
+            returnanswer = {
+                answer: newAnswer.answer,
+                questionId: newAnswer.questionId
+            }
+            returnAnswer(returnanswer);
+            console.log(returnanswer);
+            console.log('succes!: ' + returnanswer);
+        }
+        
+    )    
+}
+
+
+
 
 
 module.exports.getAll = getAll;
 module.exports.getDiscussion = getDiscussion;
 module.exports.createQuestion = createQuestion;
 module.exports.getAllQuestionsAndAnswers = getAllQuestionsAndAnswers;
+module.exports.createAnswer = createAnswer;
