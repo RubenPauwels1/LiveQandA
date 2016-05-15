@@ -25,11 +25,19 @@ app.set('view engine', 'pug');
 app.use('/', require('./routers/index'));
 app.use('/discussions', require('./routers/discussions'));
 
+//ALL SOCKETS
 io.on('connection', function(socket){
   socket.on("New Discussion", function(newDiscussion){
       controller.create(newDiscussion, function(returnDiscussion){
         console.log(returnDiscussion);
         io.emit("newDiscussionInDB", returnDiscussion);
+      });
+  });
+    
+  socket.on("New Question", function(newQuestion){
+    controller.createQuestion(newQuestion, function(returnQuestion){
+      console.log(returnQuestion);
+      io.emit("newQuestionInDB", returnQuestion);
       });
   });
 });

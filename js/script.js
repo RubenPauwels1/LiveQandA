@@ -13,7 +13,32 @@ $( document ).ready(function() {
     
     //TALK TO CLIENT
     socket.on('newDiscussionInDB', function(newDiscussionInDB){
-        var newDiscussion = "<h2 class='discussion'>" + newDiscussionInDB.discussion + "</h2>";
+        var newDiscussion = "<a href='/discussions/" + newDiscussionInDB._id + "'><h2 class='discussion'>" + newDiscussionInDB.discussion + "</h2></a>";
         $('.discussions').append(newDiscussion);
     })
+    
+    //NEW QUESTION
+    //TALK TO SERVER
+    $('#submitQuestion').click(function(e){
+        var newQuestion = {
+             discussionId: $('#discussionName').attr('data-discussionId'),
+             discussionName: $('#discussionName').text(),
+             question: $('#questionName').val()
+        }
+        socket.emit("New Question", newQuestion);
+        console.log(newQuestion);
+        $('#questionName').val("");
+        return false;
+    })
+    
+    //TALK TO CLIENT
+    socket.on('newQuestionInDB', function(newQuestionInDB){
+        var newQuestion = "<h3 class='question'>" + newQuestionInDB.question + "</h3>";
+        console.log(newQuestion);
+        $('.questions').append(newQuestion);
+    })
+    
+    
+    
+    
 });

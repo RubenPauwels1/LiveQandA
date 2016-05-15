@@ -1,8 +1,8 @@
 html
   head
     title= "Q&A App"
-    //style
-      include ../build/build.css
+    style
+      include ../build/css/build.css
     script(src='https://code.jquery.com/jquery-2.2.3.min.js')
     script
       include ../js/script.js
@@ -16,5 +16,5 @@ form
         input(type = "submit", id = "submitDiscussion" value = "Post a new discussion")
 ul.discussions
   each discussion in discussions
-    a(href = discussion._id)
+    a(href = '/discussions/' + discussion._id)
       h2.discussion #{discussion.discussion}
