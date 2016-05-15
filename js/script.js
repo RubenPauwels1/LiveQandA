@@ -34,8 +34,32 @@ $( document ).ready(function() {
     //TALK TO CLIENT
     socket.on('newQuestionInDB', function(newQuestionInDB){
         var newQuestion = "<h3 class='question'>" + newQuestionInDB.question + "</h3>";
+        //TODO: Write input field in HTML here!
+        // (don't forget to insert questionid in this/it/here)
+        //
         console.log(newQuestion);
         $('.questions').append(newQuestion);
+    })
+    
+    //NEW ANSWER
+    //TALK TO SERVER
+    $('.submitAnswer').click(function(e){
+        var questionId = $(this).attr('data-submit-questionId');
+        var newAnswer = {
+             questionId: questionId,
+             answer: $("input[data-text-questionId='" + questionId + "']").val()
+        }
+        socket.emit("New Answer", newAnswer);
+        console.log(newAnswer);
+        $("input[data-text-questionId='" + questionId + "']").val("");
+        return false;
+    })
+    
+    //TALK TO CLIENT
+    socket.on('newAnswerInDB', function(newAnswerInDB){
+        var newAnswer = "<li class='answer'>" + newAnswerInDB.answer + "</li>";
+        console.log(newAnswer);
+        $("ul[data-questionId='" + newAnswerInDB.questionId + "']").append(newAnswer);
     })
     
     

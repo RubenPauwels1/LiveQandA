@@ -40,6 +40,13 @@ io.on('connection', function(socket){
       io.emit("newQuestionInDB", returnQuestion);
       });
   });
+    
+  socket.on("New Answer", function(newAnswer){
+    controller.createAnswer(newAnswer, function(returnAnswer){
+      console.log("returnAnswer: SERVERSOCKET " + returnAnswer);
+      io.emit("newAnswerInDB", returnAnswer);
+      });
+  });
 });
 
 http.listen(3000, function(){
