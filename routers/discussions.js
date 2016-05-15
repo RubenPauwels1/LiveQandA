@@ -5,9 +5,12 @@ var controller = require('../controllers/discussions')
 
 // todo, move this to the controller
 router.get('/', function (req, res) {
-	var id = req.params.id;
-	console.log(id);
     controller.getAll(req, res);
+});
+
+router.get('/:id', function (req, res) {
+    //PARAMS: uit url
+    controller.getDiscussion(req, res, req.params.id);
 });
 
 module.exports = router;
