@@ -8,13 +8,13 @@ html
       include ../js/script.js
     script(src='http://localhost:3000/socket.io/socket.io.js')
   body
-    h1= "Discussions"
-    
-form
-    div.input
+div.container
+  h1= "Discussions"
+    form
+      div.input
         input(type = "text", id = "discussionName" placeholder = "Your discussion comes here")
         input(type = "submit", id = "submitDiscussion" value = "Post a new discussion")
-ul.discussions
-  each discussion in discussions
-    a(href = '/discussions/' + discussion._id)
-      h2.discussion #{discussion.discussion}
+      ul.discussions
+        each discussion in discussions
+          a(href = '/discussions/' + discussion._id)
+            h2.discussion #{discussion.discussion}

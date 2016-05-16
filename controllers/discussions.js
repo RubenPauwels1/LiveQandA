@@ -33,11 +33,19 @@ function getDiscussion (req, res, id) {
     var json = {};
     Discussion.findOne({'_id': id}, 'discussion _id', function(err, discussion){
         if(err){
-            console.log(err);
-        }''
+            console.log(discussion);
+        }
         json.discussion = discussion;
-        //console.log('json discussion=' + json.discussion);
-        getAllQuestionsAndAnswers(req, res, json.discussion);
+        console.log('json discussion=' + json.discussion);
+		console.log('json discussion._id=' + json.discussion._id);
+		QuestionsAndAnswers.find({'discussionId': json.discussion._id}, function(err, questionsandanswers){
+			if (err) return console.error(err);
+			console.log("discussion:" + discussion);
+        	console.log("questionsandanswers:" + questionsandanswers);
+			return res.render('discussion/questionandanswer', {questionsandanswers: questionsandanswers, discussion: discussion});
+		});
+		
+		
     }
   )
 }
@@ -57,16 +65,16 @@ function createQuestion(newQuestion, returnQuestion){
 }
 
 
-function getAllQuestionsAndAnswers (req, res, discussion) {
-    console.log('getAllQuestionsAndAnswers Fired!');
-	QuestionsAndAnswers.find( function(err, questionsandanswers){
-		if (err) return console.error(err);
-        console.log("questionsandanswers:" + questionsandanswers);
-        console.log("discussion:" + discussion);
-		return res.render('discussion/questionandanswer', {questionsandanswers: questionsandanswers, discussion: discussion});
-	});
-    
-}
+//function getAllQuestionsAndAnswers (req, res, discussion) {
+//    console.log('getAllQuestionsAndAnswers Fired!');
+//	QuestionsAndAnswers.find( { 'id': discussion._id }, function(err, questionsandanswers){
+//		if (err) return console.error(err);
+//        console.log("questionsandanswers:" + questionsandanswers);
+//        console.log("discussion:" + discussion);
+//		return res.render('discussion/questionandanswer', {questionsandanswers: questionsandanswers, discussion: discussion});
+//	});
+//    
+//}
 
 function createAnswer(newAnswer, returnAnswer){
     //FIND VRAAGID & PUSH ANSWER IN DB (voor de juiste ID)
@@ -97,5 +105,5 @@ function createAnswer(newAnswer, returnAnswer){
 module.exports.getAll = getAll;
 module.exports.getDiscussion = getDiscussion;
 module.exports.createQuestion = createQuestion;
-module.exports.getAllQuestionsAndAnswers = getAllQuestionsAndAnswers;
+//module.exports.getAllQuestionsAndAnswers = getAllQuestionsAndAnswers;
 module.exports.createAnswer = createAnswer;

@@ -8,20 +8,21 @@ html
       include ../../js/script.js
     script(src='http://localhost:3000/socket.io/socket.io.js')
   body
-    h1(id="discussionName" data-discussionId= discussion._id)= discussion.discussion
+  div.container
+    h1(id="discussionName" data-discussionId= "" + discussion._id)= discussion.discussion
     
-  form
-    div.input
-      input(type = "text", id = "questionName" placeholder = "Your question comes here")
-      input(type = "submit", id = "submitQuestion" value = "Post a new question")
+    form
+      div.input
+        input(type = "text", id = "questionName" placeholder = "Your question comes here")
+        input(type = "submit", id = "submitQuestion" value = "Post a new question")
       
-  ul.questions
-    each question in questionsandanswers
-      h3.question=question.question
-        ul.answers(data-questionId="" + question._id)
-          each answer in question.answers
-            li.answer=answer.answer
-        form
-          div.input
-            input(type = "text", class = "answer" data-text-questionId="" + question._id placeholder = "Your answer comes here")
-            input(type = "submit", class = "submitAnswer" data-submit-questionId="" + question._id value = "Post a new answer")
+    ul.questions
+      each question in questionsandanswers
+        h3.question=question.question
+          ul.answers(data-questionId="" + question._id)
+            each answer in question.answers
+              li.answer=answer.answer
+          form
+            div.input
+              input(type = "text", class = "answer" data-text-questionId="" + question._id placeholder = "Your answer comes here")
+              input(type = "submit", class = "submitAnswer" data-submit-questionId="" + question._id value = "Post a new answer")

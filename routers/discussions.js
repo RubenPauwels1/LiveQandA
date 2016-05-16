@@ -10,7 +10,9 @@ router.get('/', function (req, res) {
 
 router.get('/:id', function (req, res) {
     //PARAMS: uit url
+	console.log(req.params.id);
     controller.getDiscussion(req, res, req.params.id);
+	
 });
 
 module.exports = router;
