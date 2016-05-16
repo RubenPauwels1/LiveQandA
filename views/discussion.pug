@@ -12,8 +12,8 @@ div.container
   h1= "Discussions"
     form
       div.input
-        input(type = "text", id = "discussionName" placeholder = "Your discussion comes here")
-        input(type = "submit", id = "submitDiscussion" value = "Post a new discussion")
+        input(type = "text", id = "discussionName" class='inputfield' placeholder = "Your discussion comes here")
+        div(type = "submit", id = "submitDiscussion" class='flat-button') Post a new discussion
       ul.discussions
         each discussion in discussions
           a(href = '/discussions/' + discussion._id)

@@ -13,8 +13,8 @@ html
     
     form
       div.input
-        input(type = "text", id = "questionName" placeholder = "Your question comes here")
-        input(type = "submit", id = "submitQuestion" value = "Post a new question")
+        input(type = "text", id = "questionName" class='inputfield' placeholder = "Your question comes here")
+        div(type = "submit", id = "submitQuestion" class="flat-button") Post a new question
       
     ul.questions
       each question in questionsandanswers
@@ -25,4 +25,4 @@ html
           form
             div.input
               input(type = "text", class = "answer" data-text-questionId="" + question._id placeholder = "Your answer comes here")
-              input(type = "submit", class = "submitAnswer" data-submit-questionId="" + question._id value = "Post a new answer")
+              div(type = "submit", class = "submitAnswer" class='flat-button-mini' data-submit-questionId="" + question._id) Post a new answer

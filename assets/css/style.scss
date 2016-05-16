@@ -1,10 +1,14 @@
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
 $bgcolor: #CCC;
 $linkcolor: #000;
+$reddish : #E74C3C;
+$redder : #C0392B;
+$cloud : #ECF0F1;
 
 body{
     background-color: $bgcolor;
 	margin: 50px;
-	font-family: verdana;
+	font-family: 'Montserrat', sans-serif;
 }
 
 .container{
@@ -14,10 +18,97 @@ body{
 
 a{
 	text-decoration: none;
-	color: darkorange;
+	color: $reddish;
 	font-size: 20px;
 }
 
 a:hover{
 	color: orange;
+}
+
+
+.flat-button {
+  	
+  position: relative;
+  width: 250px; height: 60px;
+  background: $reddish;  
+  overflow: hidden;
+  z-index: 1;
+  cursor: pointer;
+  transition: color .3s;
+  /* Typo */
+  font-size: 15px;	
+  line-height: 60px;
+  text-align: center;
+  color: #fff;
+	 float: right;
+}
+
+.flat-button:after {
+  position: absolute;
+  top: 90%; left: 0;
+  width: 100%; height: 100%;
+  background: $redder;
+  content: "";
+  z-index: -2;
+  transition: transform .3s;
+}
+
+.flat-button:hover::after {
+  transform: translateY(-80%);
+  transition: transform .3s;
+}
+
+.flat-button-mini {
+  	
+  position: relative;
+  width: 200px; height: 40px;
+  background: $reddish;  
+  overflow: hidden;
+  z-index: 1;
+  cursor: pointer;
+  transition: color .3s;
+  /* Typo */
+  font-size: 15px;	
+  line-height: 40px;
+  text-align: center;
+  color: #fff;
+	 float: right;
+	 left: -100px;
+}
+
+.flat-button-mini:after {
+  position: absolute;
+  top: 90%; left: 0;
+  width: 100%; height: 100%;
+  background: $redder;
+  content: "";
+  z-index: -2;
+  transition: transform .3s;
+}
+
+.flat-button-mini:hover::after {
+  transform: translateY(-80%);
+  transition: transform .3s;
+}
+
+.inputfield{
+	width: 250px;
+    float:left;
+	height: 60px;
+	
+	
+}
+
+div .input{
+width: 500px;
+    
+    overflow: hidden;	
+}
+
+.answer{
+	width: 200px;
+    margin-bottom: 10px;
+	height: 40px;
+	
 }
